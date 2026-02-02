@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For You ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+  margin:0;
+  font-family:'Segoe UI',sans-serif;
+  background:linear-gradient(120deg,#ff9a9e,#fad0c4);
+  text-align:center;
+  color:#333;
+}
+
+section{
+  display:none;
+  min-height:100vh;
+  padding:60px 20px;
+}
+
+section:target{display:block;}
+#page1{display:block;}
+
+h1,h2{color:#b30059;}
+
+.card{
+  background:#fff;
+  max-width:800px;
+  margin:auto;
+  padding:30px;
+  border-radius:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,.25);
+}
+
+p{
+  font-size:18px;
+  line-height:1.6;
+}
+
+.nav-btns a,button{
+  background:#ff4d6d;
+  color:#fff;
+  text-decoration:none;
+  border:none;
+  padding:14px 26px;
+  font-size:18px;
+  border-radius:30px;
+  cursor:pointer;
+  transition:.3s;
+  display:inline-block;
+  margin:8px;
+}
+
+.nav-btns a:hover,button:hover{
+  background:#e6004c;
+}
+
+#surprise{display:none;margin-top:25px;}
+
+.slideshow img{
+  width:260px;
+  height:320px;
+  object-fit:cover;
+  border-radius:20px;
+  box-shadow:0 10px 25px rgba(0,0,0,.4);
+  animation:fadeIn 1s ease-in-out;
+}
+
+.heart{
+  position:fixed;
+  bottom:-10px;
+  font-size:24px;
+  animation:floatUp 6s linear infinite;
+  opacity:.8;
+}
+
+@keyframes floatUp{
+  0%{transform:translateY(0);opacity:1;}
+  100%{transform:translateY(-120vh);opacity:0;}
+}
+
+@keyframes fadeIn{
+  from{opacity:0;transform:scale(.95);}
+  to{opacity:1;transform:scale(1);}
+}
+
+.popup{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.6);
+  justify-content:center;
+  align-items:center;
+}
+
+.popup-content{
+  background:#fff;
+  padding:30px;
+  border-radius:20px;
+  max-width:360px;
+}
+
+.popup-content h2{color:#ff4d6d;}
+
+footer{
+  padding:20px;
+  font-size:14px;
+  color:#444;
+}
+</style>
+</head>
+
+<body>
+
+<section id="page1">
+  <div class="card">
+    <h1>Hey Anu ❤️</h1>
+    <h2>This website is just for you</h2>
+    <p>You are special, and you deserve something unique 🌍</p>
+    <div class="nav-btns">
+      <a href="#page2">Next ➡️</a>
+    </div>
+  </div>
+</section>
+
+<section id="page2">
+  <div class="card">
+    <h2>Our Story 📖</h2>
+    <p>✨ The day we met again – my favorite coincidence</p>
+    <p>💬 Our first conversation – unforgettable</p>
+    <p>😊 Every smile of yours is saved in my heart</p>
+    <p>❤️ And here we are… still together</p>
+    <div class="nav-btns">
+      <a href="#page1">⬅️ Back</a>
+      <a href="#page3">Next ➡️</a>
+    </div>
+  </div>
+</section>
+
+<section id="page3">
+  <div class="card">
+    <h2>Why You Mean So Much 💕</h2>
+    <p>• You understand me</p>
+    <p>• You support me</p>
+    <p>• You make my bad days better</p>
+    <p>• You are my peace</p>
+    <p>• You are my happiness 😊</p>
+    <div class="nav-btns">
+      <a href="#page2">⬅️ Back</a>
+      <a href="#page4">Next ➡️</a>
+    </div>
+  </div>
+</section>
+
+<section id="page4">
+  <div class="card">
+    <h2>Our Future 🌈</h2>
+    <p>More memories 📸</p>
+    <p>More laughter 😄</p>
+    <p>More love ❤️</p>
+    <p>Always together 🤝</p>
+    <div class="nav-btns">
+      <a href="#page3">⬅️ Back</a>
+      <a href="#page5">Next ➡️</a>
+    </div>
+  </div>
+</section>
+
+<section id="page5">
+  <div class="card">
+    <h2>Small Questions from your Vinayak 💌</h2>
+    <button onclick="showSurprise()">Questions ❔</button>
+
+    <div id="surprise">
+      <p>💖 Will you stay with me forever? 💖</p>
+      <p>Will you stop me when I'm wrong?</p>
+      <p>💍 Will you always choose me, even on hard days?</p>
+      <p>💌 What do you love most about me?</p>
+
+      <div class="slideshow">
+        <img id="slide" src="images/img1.jpg">
+        <p>👆 Missing these moments 🥺</p>
+      </div>
+
+      <br>
+      <button onclick="openPopup()">💍 My Promise</button>
+    </div>
+
+    <div class="nav-btns">
+      <a href="#page4">⬅️ Back</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Designed with love ❤️ by your IT guy 💻
+</footer>
+
+<audio id="bgMusic" loop>
+  <source src="music/romantic.mp3" type="audio/mp3">
+</audio>
+
+<div class="popup" id="popup">
+  <div class="popup-content">
+    <h2>Forever & Always ❤️</h2>
+    <p>No matter what happens,<br>I choose YOU every day 💕</p>
+    <button onclick="closePopup()">Close</button>
+  </div>
+</div>
+
+<script>
+const images=[
+  "images/img1.jpg",
+  "images/img2.jpg",
+  "images/img3.jpg"
+];
+
+let index=0;
+
+function showSurprise(){
+  document.getElementById("surprise").style.display="block";
+  document.getElementById("bgMusic").play();
+  startHearts();
+  startSlideshow();
+}
+
+function startSlideshow(){
+  setInterval(()=>{
+    index=(index+1)%images.length;
+    document.getElementById("slide").src=images[index];
+  },2500);
+}
+
+function startHearts(){
+  setInterval(()=>{
+    const h=document.createElement("div");
+    h.className="heart";
+    h.innerHTML="❤️";
+    h.style.left=Math.random()*100+"vw";
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),6000);
+  },400);
+}
+
+function openPopup(){
+  document.getElementById("popup").style.display="flex";
+}
+
+function closePopup(){
+  document.getElementById("popup").style.display="none";
+}
+</script>
+
+</body>
+</html>
